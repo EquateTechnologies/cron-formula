@@ -39,3 +39,18 @@ cron.{{ task }}:
         {% endif %}
 {% endfor %}
 {% endif %}
+
+{% if 'use_allow' in cron_settings and cron_settings.use_allow and 'allow' in cron_settings %}
+/etc/cron.allow:
+  file.managed:
+    - source: salt://cron/files/cron.allow
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 0600
+{% endif %}
+
+{% if 'use_deny' in cron_settings and not cron_settings.use_deny %}
+/etc/cron.deny:
+  file.absent:
+{% endif %}

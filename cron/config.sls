@@ -48,6 +48,8 @@ cron.{{ task }}:
     - user: root
     - group: root
     - mode: 0600
+    - context:
+      cron_settings: {{ cron_settings }}
 {% endif %}
 
 {% if 'use_deny' in cron_settings and not cron_settings.use_deny %}

@@ -1,5 +1,5 @@
 {%- if users in cron_settings %}
-{% for user in cron_settings.pop('users',[]) %}
+{% for user in cron_settings.pop('allow',[]) %}
 {{ user }}
 {% endfor -%}
 {%- endif %}

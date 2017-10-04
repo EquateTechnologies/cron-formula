@@ -52,5 +52,5 @@ cron.{{ task }}:
 
 {% if 'use_deny' in cron_settings and not cron_settings.use_deny %}
 /etc/cron.deny:
-  file.absent:
+  file.absent
 {% endif %}
